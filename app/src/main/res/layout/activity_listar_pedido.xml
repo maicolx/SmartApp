@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.venta.gestion.smartapp.gestionventa.ListarPedido">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Lista de Pedidos"
+        android:id="@+id/listaDePedidos"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="#0E8AEE"/>
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="344dp"
+        android:id="@+id/listaPedidos"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.37" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_weight="1.84"
+        android:text="Atras"
+        android:id="@+id/btnAtras"
+        android:layout_gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:backgroundTint="#045fc7"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_weight="1.88"
+        android:text="Finalizar"
+        android:id="@+id/btnFinalizar"
+        android:layout_gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:backgroundTint="#cb272c"
+        android:textColor="#ffffff" />
+
+</LinearLayout>

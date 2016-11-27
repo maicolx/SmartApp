@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.venta.gestion.smartapp.gestionventa.SeleccionCliente">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Seleccione un Cliente"
+        android:id="@+id/seleccionCliente"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="#0E8AEE"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Cliente"
+        android:id="@+id/spinnerCliente"
+        android:layout_gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:backgroundTint="#4152b6" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar Cliente"
+        android:onClick="onClick"
+        android:id="@+id/btnSeleccionarCliente"
+        android:layout_gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:backgroundTint="#92a0af"
+        android:textColor="#fefdfd" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="direccion"
+        android:id="@+id/textDireccion"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="2"
+        android:textAlignment="center"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="telefono"
+        android:id="@+id/textTelefono"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="2"
+        android:textSize="20dp"
+        android:textAlignment="center" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Seleccione un Cliente"
+        android:id="@+id/seleccionEmpleado"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="#0E8AEE"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Empleado"
+        android:id="@+id/spinnerEmpleado"
+        android:layout_gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:backgroundTint="#4152b6" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar Empleado"
+        android:onClick="onClick"
+        android:id="@+id/btnSeleccionarEmpleado"
+        android:layout_gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:backgroundTint="#92a0af"
+        android:textColor="#fefdfd" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Levantar Pedido"
+        android:id="@+id/btnLevantarPedido"
+        android:onClick="onClicK"
+        android:layout_gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:backgroundTint="#045fc7"
+        android:textColor="#ffffff" />
+</LinearLayout>
