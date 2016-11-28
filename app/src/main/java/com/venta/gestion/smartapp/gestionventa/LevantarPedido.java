@@ -1,9 +1,5 @@
 package com.venta.gestion.smartapp.gestionventa;
 
-/**
- * Created by michael on 27/11/16.
- */
-
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -17,17 +13,15 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.venta.gestion.smartapp.R;
 import com.venta.gestion.smartapp.conectivity.BDVentas;
 import com.venta.gestion.smartapp.contract.PedidoContract.*;
 import com.venta.gestion.smartapp.entities.Producto;
-
 import java.util.ArrayList;
 
 
 public class LevantarPedido extends AppCompatActivity implements View.OnClickListener{
-    String[] arrayCantidad = {"1","2","3","4","5","6","7","8","9","10"};
+    String[] arrayCantidad = {"0","1","2","3","4","5","6","7","8","9","10"};
     Spinner spinnerProducto, spinnerCantidadCompra;
     TextView textPrecioUnitario, textMontoTotal;
     Button btnRegistrarPedido, btnConfirmarPedido;
@@ -35,7 +29,7 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
     String cantidadSeleccionada;
     int cantidad;
     SQLiteDatabase db;
-
+    public static final int DEFAULT_POSITION = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,16 +59,17 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
             BDVentas conn = new BDVentas(this);
             //db es un objeto que provee metodos para manipular y acceder a la base de datos
             db = conn.getReadableDatabase();
-            Cursor cursor = db.rawQuery("select id,nombre,precio_venta,porcentaje_iva from producto", null);
+            Cursor cursor = db.rawQuery("select id,nombre,precio_venta,stock_actual from producto", null);
             Producto producto;
             while (cursor.moveToNext()){
                 producto= new Producto();
 
                 producto.setId(cursor.getInt(0));
                 producto.setNombre(cursor.getString(1));
-                //producto.setPrecioCosto(cursor.getInt(2));
                 producto.setPrecioVenta(cursor.getInt(2));
-                producto.setPorcentajeIVA(cursor.getInt(3));
+                producto.setStockActual(cursor.getInt(3));
+                //producto.setPrecioCosto(cursor.getInt(3));
+                //producto.setPorcentajeIVA(cursor.getInt(3));
                 //producto.setUltimaCompra(cursor.getString(5));
                 //producto.setStockMinimo(cursor.getInt(6));
                 //producto.setStockActual(cursor.getInt(7));
@@ -89,6 +84,7 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
 
         //Se carga el Spinner con el adaptador
         spinnerProducto.setAdapter(adaptadorProducto);
+
     }
 
     public void cargarCantidad(){
@@ -96,6 +92,7 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
         ArrayAdapter<String> adaptadorCantidad = new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,arrayCantidad);
         //Se carga el spinner con el adaptador
         spinnerCantidadCompra.setAdapter(adaptadorCantidad);
+        spinnerCantidadCompra.setSelection(DEFAULT_POSITION);
     }
 
     @Override
@@ -103,6 +100,7 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
         Producto productoSelecccionado = (Producto) spinnerProducto.getSelectedItem();
         cantidadSeleccionada = (String) spinnerCantidadCompra.getSelectedItem();
         cantidad = Integer.parseInt(cantidadSeleccionada);
+
         switch (view.getId()) {
 
             case R.id.btnRegistrarPedido:
@@ -148,3 +146,4 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
 
 
 }
+

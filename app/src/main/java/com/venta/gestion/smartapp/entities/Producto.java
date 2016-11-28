@@ -1,9 +1,5 @@
 package com.venta.gestion.smartapp.entities;
 
-/**
- * Created by michael on 27/11/16.
- */
-
 public class Producto {
     private int id;
     private String nombre;

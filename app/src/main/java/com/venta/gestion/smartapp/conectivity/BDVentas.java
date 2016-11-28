@@ -1,8 +1,5 @@
 package com.venta.gestion.smartapp.conectivity;
 
-/**
- * Created by michael on 27/11/16.
- */
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -18,7 +15,7 @@ import com.venta.gestion.smartapp.contract.PedidoContract.*;
  * Clase destinada para la conexion a al base de datos, manejador de la conexion.
  */
 public class BDVentas extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "GestionVenta.db";
     //Es recomendable que la llave primaria sea EntradaUsuario._ID, ya que el framework de Android
     //usa esta referencia internamente en varios procesos.
@@ -94,6 +91,7 @@ public class BDVentas extends SQLiteOpenHelper {
      *                se llama a downUpgrade() para volver a una versión previa.
      */
     public BDVentas(Context context) {
+
         super(context,DATABASE_NAME , null, DATABASE_VERSION);
     }
 
@@ -188,10 +186,10 @@ public class BDVentas extends SQLiteOpenHelper {
 
         // Pares clave-valor
         values2.put(EntradaEmpleado.CEDULA, 4536879);
-        values2.put(EntradaEmpleado.NOMBRE, "Micheal");
+        values2.put(EntradaEmpleado.NOMBRE, "Michael");
         values2.put(EntradaEmpleado.APELLIDO, "Girett");
-        values2.put(EntradaEmpleado.TELEFONO, "0985-879-316");
-        values2.put(EntradaEmpleado.DIRECCION, "Lopez Moreira 2564 Asuncion");
+        values2.put(EntradaEmpleado.TELEFONO, "0981-277-041");
+        values2.put(EntradaEmpleado.DIRECCION, "Alejo Garcia 1541 Lambare");
         values2.put(EntradaEmpleado.CARGO, "VENDEDOR");
         // Inserta un empleado
         sqLiteDatabase.insert(EntradaEmpleado.TABLE_NAME, null, values2);
@@ -215,7 +213,7 @@ public class BDVentas extends SQLiteOpenHelper {
         values3.put(EntradaProducto.PORCENTAJE_IVA, 10);
         values3.put(EntradaProducto.ULTIMA_COMPRA, "20/10/2016");
         values3.put(EntradaProducto.STOCK_MINIMO, 5);
-        values3.put(EntradaProducto.STOCK_ACTUAL, 8);
+        values3.put(EntradaProducto.STOCK_ACTUAL, 46);
         // Inserta un producto
         sqLiteDatabase.insert(EntradaProducto.TABLE_NAME, null, values3);
 
@@ -226,8 +224,8 @@ public class BDVentas extends SQLiteOpenHelper {
         values3.put(EntradaProducto.PRECIO_VENTA, 7500);
         values3.put(EntradaProducto.PORCENTAJE_IVA, 10);
         values3.put(EntradaProducto.ULTIMA_COMPRA, "19/10/2016");
-        values3.put(EntradaProducto.STOCK_MINIMO, 5);
-        values3.put(EntradaProducto.STOCK_ACTUAL, 8);
+        values3.put(EntradaProducto.STOCK_MINIMO, 1);
+        values3.put(EntradaProducto.STOCK_ACTUAL, 5);
         // Inserta un producto
         sqLiteDatabase.insert(EntradaProducto.TABLE_NAME, null, values3);
 
@@ -238,8 +236,8 @@ public class BDVentas extends SQLiteOpenHelper {
         values3.put(EntradaProducto.PRECIO_VENTA, 19000);
         values3.put(EntradaProducto.PORCENTAJE_IVA, 10);
         values3.put(EntradaProducto.ULTIMA_COMPRA, "15/10/2016");
-        values3.put(EntradaProducto.STOCK_MINIMO, 5);
-        values3.put(EntradaProducto.STOCK_ACTUAL, 8);
+        values3.put(EntradaProducto.STOCK_MINIMO, 1);
+        values3.put(EntradaProducto.STOCK_ACTUAL, 16);
         // Inserta un producto
         sqLiteDatabase.insert(EntradaProducto.TABLE_NAME, null, values3);
 
@@ -250,8 +248,8 @@ public class BDVentas extends SQLiteOpenHelper {
         values3.put(EntradaProducto.PRECIO_VENTA, 19000);
         values3.put(EntradaProducto.PORCENTAJE_IVA, 10);
         values3.put(EntradaProducto.ULTIMA_COMPRA, "16/10/2016");
-        values3.put(EntradaProducto.STOCK_MINIMO, 5);
-        values3.put(EntradaProducto.STOCK_ACTUAL, 8);
+        values3.put(EntradaProducto.STOCK_MINIMO, 2);
+        values3.put(EntradaProducto.STOCK_ACTUAL, 24);
         // Inserta un producto
         sqLiteDatabase.insert(EntradaProducto.TABLE_NAME, null, values3);
 
@@ -262,8 +260,8 @@ public class BDVentas extends SQLiteOpenHelper {
         values3.put(EntradaProducto.PRECIO_VENTA, 19000);
         values3.put(EntradaProducto.PORCENTAJE_IVA, 10);
         values3.put(EntradaProducto.ULTIMA_COMPRA, "13/10/2016");
-        values3.put(EntradaProducto.STOCK_MINIMO, 5);
-        values3.put(EntradaProducto.STOCK_ACTUAL, 8);
+        values3.put(EntradaProducto.STOCK_MINIMO, 1);
+        values3.put(EntradaProducto.STOCK_ACTUAL, 14);
         // Inserta un producto
         sqLiteDatabase.insert(EntradaProducto.TABLE_NAME, null, values3);
     }

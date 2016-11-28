@@ -1,8 +1,5 @@
 package com.venta.gestion.smartapp.contract;
 
-/**
- * Created by michael on 27/11/16.
- */
 import android.provider.BaseColumns;
 
 /**

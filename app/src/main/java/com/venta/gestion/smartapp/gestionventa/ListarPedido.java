@@ -1,9 +1,5 @@
 package com.venta.gestion.smartapp.gestionventa;
 
-/**
- * Created by michael on 27/11/16.
- */
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -58,7 +54,6 @@ public class ListarPedido extends AppCompatActivity implements View.OnClickListe
                 do {
 
                     String linea = cursor.getInt(0) +"     "+ cursor.getString(1)+"     "+cursor.getInt(2);
-                    //+" " +cursor.getInt(4)+" "+cursor.getInt(5)+" "+cursor.getInt(6);
                     arrayPedido[i] = linea;
                     i++;
                     //verifica mientras exista un siguiente registro

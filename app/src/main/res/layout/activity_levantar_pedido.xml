@@ -11,9 +11,9 @@
     tools:context="com.venta.gestion.smartapp.gestionventa.LevantarPedido">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="272dp"
         android:layout_height="wrap_content"
-        android:layout_weight="2"
+        android:layout_weight="0.93"
         android:text="Seleccione un Producto"
         android:id="@+id/seleccionProducto"
         android:textSize="20dp"
@@ -38,7 +38,7 @@
         android:text="Precio Unitario"
         android:id="@+id/textPrecioUnitario"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="2"
+        android:layout_weight="1.25"
         android:textAlignment="center"
         android:textSize="20dp" />
     <TextView
@@ -47,7 +47,7 @@
         android:text="Seleccione la cantidad"
         android:id="@+id/textCantidadCompra"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="2"
+        android:layout_weight="0.73"
         android:textAlignment="center"
         android:textColor="#0E8AEE"
         android:textSize="20dp" />
@@ -68,13 +68,13 @@
         android:text="Monto Total"
         android:id="@+id/textMontoTotal"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="2"
+        android:layout_weight="1.03"
         android:textAlignment="center"
         android:textSize="20dp" />
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="223dp"
         android:layout_height="wrap_content"
-        android:text="Confirmar Pedido"
+        android:text="Cargar Pedido"
         android:id="@+id/btnConfirmarPedido"
         android:layout_gravity="center"
         android:onClick="onClick"
@@ -84,7 +84,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="0.40"
         android:text="Registrar Pedido"
         android:id="@+id/btnRegistrarPedido"
         android:layout_gravity="center"

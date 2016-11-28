@@ -1,9 +1,5 @@
 package com.venta.gestion.smartapp.gestionventa;
 
-/**
- * Created by michael on 27/11/16.
- */
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -35,31 +31,17 @@ public class SeleccionCliente extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_seleccion_cliente);
         cargarCliente();
         cargarEmpleado();
+        //Obteniendo una instancia de los textview y button
         btnSeleccionCliente = (Button) findViewById(R.id.btnSeleccionarCliente);
         btnLevantarPedido = (Button) findViewById(R.id.btnLevantarPedido);
         btnSeleccionarEmpleado = (Button) findViewById(R.id.btnSeleccionarEmpleado);
-
         textoDireccion = (TextView) findViewById(R.id.textDireccion);
         textoTelefono = (TextView) findViewById(R.id.textTelefono);
 
-        //btnLevantarPedido = (Button) findViewById(R.id.btnLevantarPedido);
-
+        //Registrando la escucha sobre la actividad Main
         btnSeleccionCliente.setOnClickListener(this);
         btnSeleccionarEmpleado.setOnClickListener(this);
         btnLevantarPedido.setOnClickListener(this);
-        /*btnSeleccionCliente.setOnClickListener(new View.OnClickListener(){
-                                @Override
-                                public void onClick(View view){
-                                    seleccionarCliente();
-                                }
-        });
-        btnLevantarPedido.setOnClickListener(new View.OnClickListener(){
-                                @Override
-                                public void onClick(View view){
-                                    levantarPedido();
-                                }
-        });*/
-
 
     }
 
@@ -86,14 +68,14 @@ public class SeleccionCliente extends AppCompatActivity implements View.OnClickL
         } catch (Exception e){
 
         }
+        //obtener instancia de spinnercliente
         spinnerCliente = (Spinner) findViewById(R.id.spinnerCliente);
         ArrayAdapter<Cliente> adaptadorCliente = new ArrayAdapter<Cliente>(this,android.R.layout.simple_expandable_list_item_1,clientesList);
 
-        //Se carga el Spinner con el adaptador
+        //Seteas el adptador,carga el Spinner con el adaptador
         spinnerCliente.setAdapter(adaptadorCliente);
-
-
     }
+
     public void cargarEmpleado(){
         ArrayList<Empleado> empleadosList = new ArrayList<Empleado>();
         try {
@@ -121,25 +103,8 @@ public class SeleccionCliente extends AppCompatActivity implements View.OnClickL
 
         //Se carga el Spinner con el adaptador
         spinnerEmpleado.setAdapter(adaptadorEmpleado);
-
-
-    }
-    //Cliente clienteSelecccionado = (Cliente) spinnerCliente.getSelectedItem();
-
-    /*
-    public void seleccionarCliente (){
-        Toast.makeText(this, "Cliente " + clienteSelecccionado.getNombre()+" "+clienteSelecccionado.getApellido()+" seleccionado",Toast.LENGTH_LONG).show();
-        textoDireccion.setText(clienteSelecccionado.getDireccion());
-        textoTelefono.setText(clienteSelecccionado.getTelefono());
     }
 
-    public void levantarPedido(){
-
-        Intent intent = new Intent(SeleccionCliente.this, LevantarPedido.class);
-        intent.putExtra("codigoCliente",clienteSelecccionado.getId());
-        startActivity(intent);
-    }
-    */
 
     @Override
     public void onClick(View view) {
@@ -166,8 +131,5 @@ public class SeleccionCliente extends AppCompatActivity implements View.OnClickL
         }
 
     }
-    //SeleccionCliente.this
-
-
 }
 

@@ -1,14 +1,10 @@
 package com.venta.gestion.smartapp.contract;
 
-/**
- * Created by michael on 27/11/16.
- */
+
 
 import android.provider.BaseColumns;
 
-/**
- * Created by root on 26/10/16.
- */
+
 public class PedidoContract {
     public static abstract class EntradaPedido implements BaseColumns {
         public static final String TABLE_NAME ="pedido";

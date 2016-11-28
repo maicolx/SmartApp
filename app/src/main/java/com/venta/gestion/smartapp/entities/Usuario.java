@@ -1,8 +1,6 @@
 package com.venta.gestion.smartapp.entities;
 
-/**
- * Created by michael on 27/11/16.
- */
+
 
 public class Usuario {
     private int id;
