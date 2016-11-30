@@ -13,9 +13,9 @@
 
 
     <TextView
-        android:layout_width="212dp"
+        android:layout_width="268dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.37"
+        android:layout_weight="0.28"
         android:text="Seleccione un Cliente"
         android:id="@+id/seleccionCliente"
         android:textSize="20dp"
@@ -40,7 +40,7 @@
         android:text="direccion"
         android:id="@+id/textDireccion"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="1.15"
+        android:layout_weight="1"
         android:textAlignment="center"
         android:textSize="20dp" />
 
@@ -53,6 +53,7 @@
         android:layout_weight="0.95"
         android:textSize="20dp"
         android:textAlignment="center" />
+
     <TextView
         android:layout_width="260dp"
         android:layout_height="wrap_content"
@@ -64,37 +65,35 @@
         android:layout_gravity="center"
         android:textAppearance="?android:textAppearanceLarge"
         android:textColor="#0E8AEE"/>
+
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="0.75"
         android:text="Empleado"
         android:id="@+id/spinnerEmpleado"
         android:layout_gravity="center"
         android:textAppearance="?android:textAppearanceLarge"
         android:backgroundTint="#4152b6" />
 
-    <Button
-        android:layout_width="197dp"
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cargar Cliente"
-        android:onClick="onClick"
-        android:id="@+id/btnSeleccionarCliente"
-        android:layout_gravity="center"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:backgroundTint="#92a0af"
-        android:textColor="#fefdfd" />
-
-    <Button
-        android:layout_width="wrap_content"
+        android:text="direccion"
+        android:id="@+id/direccionvendedor"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.95"
+        android:textSize="20dp"
+        android:textAlignment="center" />
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cargar Empleado"
-        android:onClick="onClick"
-        android:id="@+id/btnSeleccionarEmpleado"
-        android:layout_gravity="center"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:backgroundTint="#92a0af"
-        android:textColor="#fefdfd" />
+        android:text="telefono"
+        android:id="@+id/telefonovendedor"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.95"
+        android:textSize="20dp"
+        android:textAlignment="center" />
 
     <Button
         android:layout_width="match_parent"

@@ -15,7 +15,7 @@ import com.venta.gestion.smartapp.contract.PedidoContract.*;
  * Clase destinada para la conexion a al base de datos, manejador de la conexion.
  */
 public class BDVentas extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 5;
     public static final String DATABASE_NAME = "GestionVenta.db";
     //Es recomendable que la llave primaria sea EntradaUsuario._ID, ya que el framework de Android
     //usa esta referencia internamente en varios procesos.
@@ -53,13 +53,14 @@ public class BDVentas extends SQLiteOpenHelper {
 
     String sqlCreateEmpleado = "CREATE TABLE "+ EntradaEmpleado.TABLE_NAME+" ("+
             EntradaEmpleado._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "+
-            EntradaEmpleado.CEDULA +" INTEGER NOT NULL, " +
+            EntradaEmpleado.ID + " INTEGER NOT NULL, " +
             EntradaEmpleado.NOMBRE +" TEXT NOT NULL, " +
             EntradaEmpleado.APELLIDO +" TEXT NOT NULL, " +
             EntradaEmpleado.TELEFONO +" TEXT, " +
             EntradaEmpleado.DIRECCION +" TEXT, " +
             EntradaEmpleado.CARGO +" TEXT NOT NULL,"+
-            " UNIQUE ("+EntradaEmpleado.CEDULA+"))";
+            EntradaEmpleado.CEDULA +" INTEGER NOT NULL, " +
+            " UNIQUE ("+EntradaEmpleado.ID+"))";
 
     String sqlCreatePedido = "CREATE TABLE "+ EntradaPedido.TABLE_NAME+" ("+
             EntradaPedido._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "+
@@ -71,7 +72,7 @@ public class BDVentas extends SQLiteOpenHelper {
             EntradaPedido.PRECIO_VENTA +" INTEGER NOT NULL, " +
             EntradaPedido.MONTO_TOTAL + " INTEGER NOT NULL," +
             " FOREIGN KEY ("+EntradaPedido.ID_CLIENTE+") REFERENCES "+EntradaCliente.TABLE_NAME+" ("+EntradaCliente.ID+") ON DELETE CASCADE," +
-            " FOREIGN KEY ("+EntradaPedido.ID_EMPLEADO+") REFERENCES "+EntradaEmpleado.TABLE_NAME+" ("+EntradaEmpleado.CEDULA+") ON DELETE CASCADE," +
+            " FOREIGN KEY ("+EntradaPedido.ID_EMPLEADO+") REFERENCES "+EntradaEmpleado.TABLE_NAME+" ("+EntradaEmpleado.ID+") ON DELETE CASCADE," +
             " FOREIGN KEY ("+EntradaPedido.ID_PRODUCTO+") REFERENCES "+EntradaProducto.TABLE_NAME+"("+EntradaProducto.ID+") ON DELETE CASCADE," +
             " UNIQUE ("+EntradaPedido.ID+"))";
 
@@ -175,32 +176,35 @@ public class BDVentas extends SQLiteOpenHelper {
         sqLiteDatabase.insert(EntradaCliente.TABLE_NAME, null, values);
 
         // Pares clave-valor
-        values2.put(EntradaEmpleado.CEDULA, 4358942);
+        values2.put(EntradaEmpleado.ID, 1);
         values2.put(EntradaEmpleado.NOMBRE, "David");
         values2.put(EntradaEmpleado.APELLIDO, "Arrua");
         values2.put(EntradaEmpleado.TELEFONO, "0971-584-276");
         values2.put(EntradaEmpleado.DIRECCION, "Las Residentas 909 Fernando");
         values2.put(EntradaEmpleado.CARGO, "VENDEDOR");
+        values2.put(EntradaEmpleado.CEDULA, 4358942);
         // Inserta un empleado
         sqLiteDatabase.insert(EntradaEmpleado.TABLE_NAME, null, values2);
 
         // Pares clave-valor
-        values2.put(EntradaEmpleado.CEDULA, 4536879);
+        values2.put(EntradaEmpleado.ID, 2);
         values2.put(EntradaEmpleado.NOMBRE, "Michael");
         values2.put(EntradaEmpleado.APELLIDO, "Girett");
         values2.put(EntradaEmpleado.TELEFONO, "0981-277-041");
         values2.put(EntradaEmpleado.DIRECCION, "Alejo Garcia 1541 Lambare");
         values2.put(EntradaEmpleado.CARGO, "VENDEDOR");
+        values2.put(EntradaEmpleado.CEDULA, 4536879);
         // Inserta un empleado
         sqLiteDatabase.insert(EntradaEmpleado.TABLE_NAME, null, values2);
 
         // Pares clave-valor
-        values2.put(EntradaEmpleado.CEDULA, 3897920);
+        values2.put(EntradaEmpleado.ID, 3);
         values2.put(EntradaEmpleado.NOMBRE, "Naida");
         values2.put(EntradaEmpleado.APELLIDO, "Benitez");
         values2.put(EntradaEmpleado.TELEFONO, "0961-045-987");
         values2.put(EntradaEmpleado.DIRECCION, "Fulgencion Moreno 1024 Asuncion");
         values2.put(EntradaEmpleado.CARGO, "VENDEDOR");
+        values2.put(EntradaEmpleado.CEDULA, 3897920);
         // Inserta un cliente
         sqLiteDatabase.insert(EntradaEmpleado.TABLE_NAME, null, values2);
 

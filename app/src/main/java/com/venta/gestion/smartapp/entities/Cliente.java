@@ -80,6 +80,6 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return id + " "+nombre+" "+apellido;
+        return nombre+" "+apellido;
     }
 }
