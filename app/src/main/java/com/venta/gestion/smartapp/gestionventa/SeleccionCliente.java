@@ -158,7 +158,7 @@ public class SeleccionCliente extends AppCompatActivity implements View.OnClickL
 
             case R.id.btnLevantarPedido:
                 int idCLiente = clienteSelecccionado.getId();
-                int idEmpleado = empleadoSeleccionado.getCedula();
+                int idEmpleado = empleadoSeleccionado.getId();
                 Intent intent = new Intent(this, LevantarPedido.class);
                 intent.putExtra("clienteEnviado",idCLiente);
                 intent.putExtra("empleadoEnviado",idEmpleado);

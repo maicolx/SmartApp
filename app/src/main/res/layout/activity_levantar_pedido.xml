@@ -11,9 +11,9 @@
     tools:context="com.venta.gestion.smartapp.gestionventa.LevantarPedido">
 
     <TextView
-        android:layout_width="272dp"
+        android:layout_width="297dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.93"
+        android:layout_weight="0.67"
         android:text="Seleccione un Producto"
         android:id="@+id/seleccionProducto"
         android:textSize="20dp"
@@ -38,7 +38,7 @@
         android:text="Precio Unitario"
         android:id="@+id/textPrecioUnitario"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="1.25"
+        android:layout_weight="0.84"
         android:textAlignment="center"
         android:textSize="20dp" />
     <TextView
@@ -47,7 +47,7 @@
         android:text="Seleccione la cantidad"
         android:id="@+id/textCantidadCompra"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.73"
+        android:layout_weight="0.48"
         android:textAlignment="center"
         android:textColor="#0E8AEE"
         android:textSize="20dp" />
