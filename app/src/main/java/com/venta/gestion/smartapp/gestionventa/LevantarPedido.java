@@ -97,34 +97,6 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
         spinnerCantidadCompra.setSelection(DEFAULT_POSITION);
     }
 
-
-  /*  @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-         switch (parent.getId()){
-             case R.id.spinnerProducto:
-                 Producto dato = (Producto) parent.getItemAtPosition(position);
-                 textPrecioUnitario.setText(String.valueOf(dato.getPrecioVenta()));
-                 break;
-             case R.id.spinnerCantidadCompra:
-                 String valor = (String) parent.getItemAtPosition(position);
-                 int x,y;
-                 x= Integer.valueOf(valor);
-                 y=Integer.valueOf(String.valueOf(textPrecioUnitario.getText()));
-                 String cal = String.valueOf(x*y);
-                 textMontoTotal.setText(cal);
-         }
-
-
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
-}*/
-
    public void cargararticulos(){
 
         spinnerProducto.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -153,7 +125,7 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
                     x= Integer.valueOf(valor);
                     y=Integer.valueOf(String.valueOf(textPrecioUnitario.getText()));
                     String cal = String.valueOf(x*y);
-                    textMontoTotal.setText(cal);
+                    textMontoTotal.setText("Monto Total: "+cal+" Gs");
                 }
             }
             @Override
@@ -169,24 +141,25 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
         Producto productoSelecccionado = (Producto) spinnerProducto.getSelectedItem();
         cantidadSeleccionada = (String) spinnerCantidadCompra.getSelectedItem();
         cantidad = Integer.parseInt(cantidadSeleccionada);
-        boolean ok=false;
+
 
         switch (view.getId()) {
 
             case R.id.btnRegistrarPedido:
-                if (ok){
+
+
                 Intent intent = new Intent(this, ListarPedido.class);
                 startActivity(intent);
-                break;}
+                break;
 
             case R.id.btnConfirmarPedido://cargarpedido
                 Integer stockmi = Integer.valueOf(productoSelecccionado.getStockMinimo());
                 Integer stockma = Integer.valueOf(productoSelecccionado.getStockActual());
-                Toast.makeText(this, stockma+" "+stockmi, Toast.LENGTH_LONG).show();
+
                 if (stockmi==0){
                     Toast.makeText(this,"Stock Cero,elija otro producto",Toast.LENGTH_LONG).show();
-                    textPrecioUnitario.setText("Precio: 0 Gs");
-                    textMontoTotal.setText("Precio*Cantidad: 0Gs");
+                    textPrecioUnitario.setText("0");
+                    textMontoTotal.setText("0");
                     spinnerCantidadCompra.setSelection(DEFAULT_POSITION);
 
                 }
@@ -194,11 +167,13 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
 
                     if(cantidad>stockma) {
                         Toast.makeText(this, "Cantidad no disponible de " + productoSelecccionado.getNombre(), Toast.LENGTH_LONG).show();
-                        textPrecioUnitario.setText("Precio: 0 Gs");
-                        textMontoTotal.setText("Precio*Cantidad: 0Gs");
+                        textPrecioUnitario.setText("0");
+                        textMontoTotal.setText("0");
                         spinnerCantidadCompra.setSelection(DEFAULT_POSITION);
+                        spinnerProducto.setSelection(DEFAULT_POSITION);
 
-                    }/*else {
+
+                    }else {
                         try {
                             idCliente = this.getIntent().getExtras().getInt("clienteEnviado");
                             idEmpleado = this.getIntent().getExtras().getInt("empleadoEnviado");
@@ -227,10 +202,10 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
 
                         }
                         Toast.makeText(this, "Se Agrego " + productoSelecccionado.getNombre()+" al carro",Toast.LENGTH_LONG).show();
-                        textMontoTotal.setText(Integer.toString(productoSelecccionado.getPrecioVenta()*cantidad));
-                        ok=true;
+                        textMontoTotal.setText("Monto total: "+Integer.toString(productoSelecccionado.getPrecioVenta()*cantidad)+" Gs");
+
                     }
-*/
+
              }
 
                 break;
