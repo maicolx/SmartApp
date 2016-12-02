@@ -151,7 +151,7 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
                 Intent intent = new Intent(this, ListarPedido.class);
                 startActivity(intent);
                 break;
-
+            //agrega a la lista de pedidos
             case R.id.btnConfirmarPedido://cargarpedido
                 Integer stockmi = Integer.valueOf(productoSelecccionado.getStockMinimo());
                 Integer stockma = Integer.valueOf(productoSelecccionado.getStockActual());
