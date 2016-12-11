@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -196,11 +197,14 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
 
 
                     }else {
+                        Toast.makeText(this, "Probar",Toast.LENGTH_LONG).show();
                         try {
-                            idCliente = this.getIntent().getExtras().getInt("clienteEnviado");
-                            idEmpleado = this.getIntent().getExtras().getInt("empleadoEnviado");
+                            idCliente = this.getIntent().getIntExtra(SeleccionCliente.EXTRA_CLIENTE,0);
+                            idEmpleado = this.getIntent().getIntExtra(SeleccionCliente.EXTRA_VENDEDOR,0);
                             ContentValues values = new ContentValues();
-
+                            /*BDVentas conn = new BDVentas(this);
+                            db = conn.getReadableDatabase();*/
+                            Toast.makeText(this, "Accediendo a la BD",Toast.LENGTH_LONG).show();
                             //consultar ultimo valor del id pedido
                             if (db != null) {
                                 Cursor c = db.rawQuery("select * from pedido", null);
@@ -217,16 +221,23 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
                                 values.put(EntradaPedido.MONTO_TOTAL, productoSelecccionado.getPrecioVenta() * cantidad);
                                 // Inserta un Pedido
                                 db.insert(EntradaPedido.TABLE_NAME, null, values);
+                                if (db.isOpen()){
+                                    c.close();
+                                    db.close();}
 
                             }
-
-
+                            Toast.makeText(this, "Se Agrego " + productoSelecccionado.getNombre()+" al carro",Toast.LENGTH_LONG).show();
+                            textMontoTotal.setText("Monto total: "+Integer.toString(productoSelecccionado.getPrecioVenta()*cantidad)+" Gs");
 
                         } catch (Exception e){
+                            Toast.makeText(this, "Se perdio la conexion",Toast.LENGTH_LONG).show();
+                            textPrecioUnitario.setText("0");
+                            textMontoTotal.setText("0");
+                            spinnerCantidadCompra.setSelection(DEFAULT_POSITION);
 
                         }
-                        Toast.makeText(this, "Se Agrego " + productoSelecccionado.getNombre()+" al carro",Toast.LENGTH_LONG).show();
-                        textMontoTotal.setText("Monto total: "+Integer.toString(productoSelecccionado.getPrecioVenta()*cantidad)+" Gs");
+
+
 
                     }
 

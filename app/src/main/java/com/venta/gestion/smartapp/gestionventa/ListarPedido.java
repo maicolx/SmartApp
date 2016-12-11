@@ -65,6 +65,9 @@ public class ListarPedido extends AppCompatActivity implements View.OnClickListe
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,arrayPedido);
             listaPedidos = (ListView) findViewById(R.id.listaPedidos);
             listaPedidos.setAdapter(adapter);
+            if (db.isOpen()){
+                cursor.close();
+                db.close();}
 
         }
     }

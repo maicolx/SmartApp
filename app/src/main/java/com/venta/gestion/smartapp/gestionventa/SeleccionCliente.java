@@ -27,6 +27,8 @@ public class SeleccionCliente extends AppCompatActivity implements View.OnClickL
     Spinner spinnerCliente,spinnerEmpleado;
     Button btnSeleccionCliente, btnLevantarPedido, btnSeleccionarEmpleado;
     TextView textoTelefono,textoDireccion,tvdireccionvendedor,tvtelefonovendedor;
+    public final static String EXTRA_CLIENTE = "CLIENTEENVIADO";
+    public final static String EXTRA_VENDEDOR = "VENDEDORENVIADO";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,8 +162,8 @@ public class SeleccionCliente extends AppCompatActivity implements View.OnClickL
                 int idCLiente = clienteSelecccionado.getId();
                 int idEmpleado = empleadoSeleccionado.getId();
                 Intent intent = new Intent(this, LevantarPedido.class);
-                intent.putExtra("clienteEnviado",idCLiente);
-                intent.putExtra("empleadoEnviado",idEmpleado);
+                intent.putExtra(EXTRA_CLIENTE,idCLiente);
+                intent.putExtra(EXTRA_VENDEDOR,idEmpleado);
                 startActivity(intent);
                 break;
             /* case R.id.btnSeleccionarCliente:
