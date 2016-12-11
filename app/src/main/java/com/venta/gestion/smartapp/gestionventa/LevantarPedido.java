@@ -119,14 +119,36 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
       spinnerCantidadCompra.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (parent.getId() == R.id.spinnerCantidadCompra){
+                if (parent.getId() == R.id.spinnerCantidadCompra) {
                     String valor = (String) parent.getItemAtPosition(position);
-                    int x,y;
-                    x= Integer.valueOf(valor);
-                    y=Integer.valueOf(String.valueOf(textPrecioUnitario.getText()));
-                    String cal = String.valueOf(x*y);
-                    textMontoTotal.setText("Monto Total: "+cal+" Gs");
+                    int x, y;
+                    x = Integer.valueOf(valor);
+                    y = Integer.valueOf(String.valueOf(textPrecioUnitario.getText()));
+                    //String cal = String.valueOf(x * y);
+                    //textMontoTotal.setText("Monto Total: " + cal + " Gs");
+
+                    Producto val = (Producto) spinnerProducto.getSelectedItem();
+                    Integer min = Integer.valueOf(val.getStockMinimo());
+                    Integer max = Integer.valueOf(val.getStockActual());
+                        if ((min == 0) && (position != 0)) {
+                            Toast.makeText(getApplicationContext(), "Stock Cero,elija otro producto", Toast.LENGTH_LONG).show();
+                            textPrecioUnitario.setText("0");
+                            textMontoTotal.setText("0");
+                            spinnerCantidadCompra.setSelection(DEFAULT_POSITION);
+                        } else if (min > max || min < max) {
+                                if (x > max) {
+                                    Toast.makeText(getApplicationContext(), "Cantidad no disponible de " + val.getNombre(), Toast.LENGTH_LONG).show();
+                                    textPrecioUnitario.setText("0");
+                                    textMontoTotal.setText("0");
+                                    spinnerCantidadCompra.setSelection(DEFAULT_POSITION);
+                                    spinnerProducto.setSelection(DEFAULT_POSITION);
+                                }else {
+                                    String cal = String.valueOf(x * y);
+                                    textMontoTotal.setText("Monto Total: " + cal + " Gs");
+                                }
+                        }
                 }
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -184,7 +206,7 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
                                 Cursor c = db.rawQuery("select * from pedido", null);
                                 int cantidadFilas = 0;
                                 cantidadFilas=c.getCount();
-
+                                Toast.makeText(this, "Filas " + cantidadFilas +" encontradas",Toast.LENGTH_LONG).show();
                                 // Pares clave-valor
                                 values.put(EntradaPedido.ID, cantidadFilas + 1);
                                 values.put(EntradaPedido.ID_CLIENTE, idCliente);
@@ -193,9 +215,11 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
                                 values.put(EntradaPedido.CANTIDAD, cantidadSeleccionada);
                                 values.put(EntradaPedido.PRECIO_VENTA, productoSelecccionado.getPrecioVenta());
                                 values.put(EntradaPedido.MONTO_TOTAL, productoSelecccionado.getPrecioVenta() * cantidad);
+                                // Inserta un Pedido
+                                db.insert(EntradaPedido.TABLE_NAME, null, values);
+
                             }
-                            // Inserta un Pedido
-                            db.insert(EntradaPedido.TABLE_NAME, null, values);
+
 
 
                         } catch (Exception e){

@@ -47,7 +47,7 @@ public class ListarPedido extends AppCompatActivity implements View.OnClickListe
             int i = 0;
             // Instancia el array donde se guardaran los pedidos.
             String [] arrayPedido = new String[cantidadFilas];
-            Toast.makeText(this, "Filas " + cantidadFilas +"encontradas",Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Filas " + cantidadFilas +" encontradas",Toast.LENGTH_LONG).show();
             // Hace el recorrido desde el primer registro
             if (cursor.moveToFirst()){
 
@@ -75,7 +75,6 @@ public class ListarPedido extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btnAtras:
                 Intent intent = new Intent(this, LevantarPedido.class);
-                finish();
                 startActivity(intent);
                 break;
 
