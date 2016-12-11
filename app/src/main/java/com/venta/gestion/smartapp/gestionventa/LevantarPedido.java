@@ -33,6 +33,8 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
     int cantidad;
     SQLiteDatabase db;
     public static final int DEFAULT_POSITION = 0;
+    public final static String EXTRA_DATOS = "DATOENVIADO";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -172,6 +174,7 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
 
 
                 Intent intent = new Intent(this, ListarPedido.class);
+                intent.putExtra(EXTRA_DATOS,idCliente);
                 startActivity(intent);
                 break;
             //agrega a la lista de pedidos
@@ -197,14 +200,14 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
 
 
                     }else {
-                        Toast.makeText(this, "Probar",Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "Conectando...",Toast.LENGTH_LONG).show();
                         try {
                             idCliente = this.getIntent().getIntExtra(SeleccionCliente.EXTRA_CLIENTE,0);
                             idEmpleado = this.getIntent().getIntExtra(SeleccionCliente.EXTRA_VENDEDOR,0);
                             ContentValues values = new ContentValues();
                             /*BDVentas conn = new BDVentas(this);
                             db = conn.getReadableDatabase();*/
-                            Toast.makeText(this, "Accediendo a la BD",Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "Accediendo a la BD..."+idCliente,Toast.LENGTH_LONG).show();
                             //consultar ultimo valor del id pedido
                             if (db != null) {
                                 Cursor c = db.rawQuery("select * from pedido", null);
@@ -226,7 +229,7 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
                                     db.close();}
 
                             }
-                            Toast.makeText(this, "Se Agrego " + productoSelecccionado.getNombre()+" al carro",Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "Se Agrego " + productoSelecccionado.getNombre()+" a la lista",Toast.LENGTH_LONG).show();
                             textMontoTotal.setText("Monto total: "+Integer.toString(productoSelecccionado.getPrecioVenta()*cantidad)+" Gs");
 
                         } catch (Exception e){

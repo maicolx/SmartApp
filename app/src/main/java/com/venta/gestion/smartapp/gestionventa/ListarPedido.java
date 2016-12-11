@@ -17,7 +17,7 @@ import com.venta.gestion.smartapp.conectivity.BDVentas;
 public class ListarPedido extends AppCompatActivity implements View.OnClickListener {
     Button btnAtras,btnFinalizar;
     ListView listaPedidos;
-    int idCliente;
+    int cli;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +37,17 @@ public class ListarPedido extends AppCompatActivity implements View.OnClickListe
         SQLiteDatabase db = conn.getReadableDatabase();
 
         if (db != null){
-            //idCliente = this.getIntent().getExtras().getInt("clienteEnviado");
-            //String[] param  = new String[] {Integer.toString(idCliente)};
+            try {
+                cli = this.getIntent().getIntExtra(LevantarPedido.EXTRA_DATOS,0);
+                Toast.makeText(this, "listado para el cliente "+cli,Toast.LENGTH_LONG).show();
+
+            }catch (Exception e){
+                Toast.makeText(this, "no se recupero datos del cliente...",Toast.LENGTH_LONG).show();
+            }
+
 
             // Cursor cursor = db.rawQuery("select p.cantidad,a.nombre,p.monto_total from pedido p INNER JOIN producto a on p.id_producto=a.id where p.id_cliente=? ", param);
-            Cursor cursor = db.rawQuery("select p.cantidad,a.nombre,p.monto_total from pedido p INNER JOIN producto a on p.id_producto=a.id", null);
+            Cursor cursor = db.rawQuery("select p.cantidad,a.nombre,p.monto_total from producto a INNER JOIN pedido p on p.id_producto=a.id and p.id_cliente= ? ", new String[]{String.valueOf(cli)});
             //cuenta la cantidad de filas de la tabla
             int cantidadFilas = cursor.getCount();
             int i = 0;
@@ -78,6 +84,7 @@ public class ListarPedido extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btnAtras:
                 Intent intent = new Intent(this, LevantarPedido.class);
+                intent.putExtra(SeleccionCliente.EXTRA_CLIENTE,cli);
                 startActivity(intent);
                 break;
 
