@@ -15,7 +15,7 @@ import com.venta.gestion.smartapp.contract.PedidoContract.*;
  * Clase destinada para la conexion a al base de datos, manejador de la conexion.
  */
 public class BDVentas extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 5;
+    public static final int DATABASE_VERSION = 6;
     public static final String DATABASE_NAME = "GestionVenta.db";
     //Es recomendable que la llave primaria sea EntradaUsuario._ID, ya que el framework de Android
     //usa esta referencia internamente en varios procesos.
@@ -217,7 +217,7 @@ public class BDVentas extends SQLiteOpenHelper {
         values3.put(EntradaProducto.PORCENTAJE_IVA, 10);
         values3.put(EntradaProducto.ULTIMA_COMPRA, "20/10/2016");
         values3.put(EntradaProducto.STOCK_MINIMO, 5);
-        values3.put(EntradaProducto.STOCK_ACTUAL, 46);
+        values3.put(EntradaProducto.STOCK_ACTUAL, 26);
         // Inserta un producto
         sqLiteDatabase.insert(EntradaProducto.TABLE_NAME, null, values3);
 
@@ -229,7 +229,7 @@ public class BDVentas extends SQLiteOpenHelper {
         values3.put(EntradaProducto.PORCENTAJE_IVA, 10);
         values3.put(EntradaProducto.ULTIMA_COMPRA, "19/10/2016");
         values3.put(EntradaProducto.STOCK_MINIMO, 1);
-        values3.put(EntradaProducto.STOCK_ACTUAL, 5);
+        values3.put(EntradaProducto.STOCK_ACTUAL, 10);
         // Inserta un producto
         sqLiteDatabase.insert(EntradaProducto.TABLE_NAME, null, values3);
 
