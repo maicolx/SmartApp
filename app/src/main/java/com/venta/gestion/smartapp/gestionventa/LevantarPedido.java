@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.venta.gestion.smartapp.R;
 import com.venta.gestion.smartapp.conectivity.BDVentas;
 import com.venta.gestion.smartapp.contract.PedidoContract.*;
+import com.venta.gestion.smartapp.contract.ProductoContract;
 import com.venta.gestion.smartapp.entities.Producto;
 import java.util.ArrayList;
 
@@ -224,10 +225,6 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
                                 values.put(EntradaPedido.MONTO_TOTAL, productoSelecccionado.getPrecioVenta() * cantidad);
                                 // Inserta un Pedido
                                 db.insert(EntradaPedido.TABLE_NAME, null, values);
-                                if (db.isOpen()){
-                                    c.close();
-                                    db.close();}
-
                             }
                             Toast.makeText(this, "Se Agrego " + productoSelecccionado.getNombre()+" a la lista",Toast.LENGTH_LONG).show();
                             textMontoTotal.setText("Monto total: "+Integer.toString(productoSelecccionado.getPrecioVenta()*cantidad)+" Gs");
@@ -237,11 +234,27 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
                             textPrecioUnitario.setText("0");
                             textMontoTotal.setText("0");
                             spinnerCantidadCompra.setSelection(DEFAULT_POSITION);
-
                         }
 
+                        try {
+                            Toast.makeText(this, "Actualizando stock productos...",Toast.LENGTH_LONG).show();
+                            // Valores
+                            ContentValues values1 = new ContentValues();
 
+                            // Valores nuevos del nombre y teléfono
+                            values1.put(ProductoContract.EntradaProducto.ID, productoSelecccionado.getId());
+                            values1.put(ProductoContract.EntradaProducto.STOCK_ACTUAL, productoSelecccionado.getStockActual()-cantidad);
+                            if (db != null) {
+                                String[] args = new String[]{String.valueOf(stockma-cantidad), String.valueOf(productoSelecccionado.getId())};
+                                //String strSQL = "UPDATE producto SET stock_actual = ? WHERE id = ?",args;
+                                db.execSQL("UPDATE producto SET stock_actual = ? WHERE id = ?",args);
+                                Toast.makeText(this, "Tabla productos actualizado...",Toast.LENGTH_LONG).show();
+                                cargarProducto();
 
+                            }
+                        }catch (Exception e){
+                            Toast.makeText(this, "No se pudo actualizar la tabla productos...",Toast.LENGTH_LONG).show();
+                        }
                     }
 
              }
