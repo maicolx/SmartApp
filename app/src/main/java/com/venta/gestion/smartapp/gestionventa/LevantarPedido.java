@@ -190,9 +190,9 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
                     spinnerCantidadCompra.setSelection(DEFAULT_POSITION);
 
                 }
-                else if (stockmi > stockma || stockmi < stockma) {
+                else if (stockmi >= stockma || stockmi <= stockma) {
 
-                    if(cantidad>stockma) {
+                    if(cantidad>stockmi) {
                         Toast.makeText(this, "Cantidad no disponible de " + productoSelecccionado.getNombre(), Toast.LENGTH_LONG).show();
                         textPrecioUnitario.setText("0");
                         textMontoTotal.setText("0");
@@ -258,6 +258,9 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
                     }
 
              }
+                else {
+                    Toast.makeText(this, "Cantidad no disponible..",Toast.LENGTH_LONG).show();
+                }
 
                 break;
         }
