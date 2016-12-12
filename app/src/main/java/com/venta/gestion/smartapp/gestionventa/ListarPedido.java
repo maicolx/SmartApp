@@ -39,7 +39,7 @@ public class ListarPedido extends AppCompatActivity implements View.OnClickListe
         if (db != null){
             try {
                 cli = this.getIntent().getIntExtra(LevantarPedido.EXTRA_DATOS,0);
-                Toast.makeText(this, "listado para el cliente "+cli,Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, "listado para el cliente "+cli,Toast.LENGTH_LONG).show();
 
             }catch (Exception e){
                 Toast.makeText(this, "no se recupero datos del cliente...",Toast.LENGTH_LONG).show();
@@ -53,7 +53,7 @@ public class ListarPedido extends AppCompatActivity implements View.OnClickListe
             int i = 0;
             // Instancia el array donde se guardaran los pedidos.
             String [] arrayPedido = new String[cantidadFilas];
-            Toast.makeText(this, "Filas " + cantidadFilas +" encontradas",Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "Filas " + cantidadFilas +" encontradas",Toast.LENGTH_LONG).show();
             // Hace el recorrido desde el primer registro
             if (cursor.moveToFirst()){
 

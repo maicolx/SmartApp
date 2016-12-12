@@ -192,7 +192,7 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
                 }
                 else if (stockmi >= stockma || stockmi <= stockma) {
 
-                    if(cantidad>stockmi) {
+                    if((cantidad>stockma) && (cantidad>stockmi)) {
                         Toast.makeText(this, "Cantidad no disponible de " + productoSelecccionado.getNombre(), Toast.LENGTH_LONG).show();
                         textPrecioUnitario.setText("0");
                         textMontoTotal.setText("0");
@@ -208,13 +208,13 @@ public class LevantarPedido extends AppCompatActivity implements View.OnClickLis
                             ContentValues values = new ContentValues();
                             /*BDVentas conn = new BDVentas(this);
                             db = conn.getReadableDatabase();*/
-                            Toast.makeText(this, "Accediendo a la BD..."+idCliente,Toast.LENGTH_LONG).show();
+                           // Toast.makeText(this, "Accediendo a la BD..."+idCliente,Toast.LENGTH_LONG).show();
                             //consultar ultimo valor del id pedido
                             if (db != null) {
                                 Cursor c = db.rawQuery("select * from pedido", null);
                                 int cantidadFilas = 0;
                                 cantidadFilas=c.getCount();
-                                Toast.makeText(this, "Filas " + cantidadFilas +" encontradas",Toast.LENGTH_LONG).show();
+                              //  Toast.makeText(this, "Filas " + cantidadFilas +" encontradas",Toast.LENGTH_LONG).show();
                                 // Pares clave-valor
                                 values.put(EntradaPedido.ID, cantidadFilas + 1);
                                 values.put(EntradaPedido.ID_CLIENTE, idCliente);
